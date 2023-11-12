@@ -19,7 +19,7 @@ function cerrarModal() {
   }
 
   function fetchParkingLots() {
-    fetch('https://16.170.227.32:8080/parking_lot')
+    fetch('https://16.170.227.32/parking_lot')
         .then(response => response.json())
         .then(data => {
         })
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //FUNCION AÑADIR ESTACIONAMIENTO
     function addParkingLot(parkingLotData) {
-        fetch('https://16.170.227.32:8080/parking_lot', {
+        fetch('https://16.170.227.32/parking_lot', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //FUNCION EDITAR ESTACIONAMIENTO
     function editar(id) {
-        fetch(`https://16.170.227.32:8080/parking_lot/${id}`)
+        fetch(`https://16.170.227.32/parking_lot/${id}`)
             .then(response => response.json())
             .then(data => {
                 document.getElementById('editarId').value = id;
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        fetch(`https://16.170.227.32:8080/parking_lot/${id}`, {
+        fetch(`https://16.170.227.32/parking_lot/${id}`, {
             method: 'DELETE'
         })  
         .then(response => {
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // CARGAR DATOS DE LOS ESTACIONAMIENTOS
-    fetch('https://16.170.227.32:8080/parking_lot')
+    fetch('https://16.170.227.32/parking_lot')
         .then(response => response.json())
         .then(data => {
             const tableBody = document.querySelector('table tbody');
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
         minutePrice: minutePrice
     };
   
-    fetch(`https://16.170.227.32:8080/parking_lot/${id}`, {
+    fetch(`https://16.170.227.32/parking_lot/${id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
