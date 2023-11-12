@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de Administración</title>
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+<script src="js/firebase-config.js"></script>
+
+</head>
+
+<script>
+    // Verificar el estado de autenticación del usuario
+    firebase.auth().onAuthStateChanged((user) => {
+        if (!user) {
+            // Si no hay usuario autenticado, redirige a login.html
+            window.location.href = 'login.html';
+        }
+        // Si hay usuario autenticado, puedes agregar lógica adicional aquí si es necesario
+    });
+</script>
+
+<body>
+
+<header>
+    <div class="container">
+        <div id="branding">
+            <h1>Panel de Administración</h1>
+        </div>
+        <nav>
+            <ul>
+                <li class="current"><a href="#">Estacionamientos</a></li>
+                <li><a href="parking-space.html">Espacios</a></li>
+                <li><a href="#" id="logout">Salir</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+    
+<div class="container">
+    <section id="main">        
+        <h2>Añadir nuevo estacionamiento</h2>
+        <button id="btnAddParkingLot" onclick="mostrarModalAgregar()">Añadir Estacionamiento</button>
+
+        <h2>Entradas Existentes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Dirección</th>
+                    <th>Latitud</th>
+                    <th>Longitud</th>
+                    <th>Nombre</th>
+                    <th>Precio por Hora</th>
+                    <th>Precio por Minuto</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las filas se llenarán con la respuesta de la API -->
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<div id="modalEditar" class="modal" style="display:none;">
+
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal()">&times;</span>
+        <h2>Editar Estacionamiento</h2>
+        <form id="formEditar">
+            <input type="hidden" id="editarId">
+            <label for="editarDireccion">Dirección:</label>
+            <input type="text" id="editarDireccion" required>
+
+            <label for="editarLatitud">Latitud:</label>
+            <input type="text" id="editarLatitud" required>
+
+            <label for="editarLongitud">Longitud:</label>
+            <input type="text" id="editarLongitud" required>
+
+            <label for="editarNombre">Nombre:</label>
+            <input type="text" id="editarNombre" required>
+
+            <label for="editarPrecioHora">Precio Hora:</label>
+            <input type="text" id="editarPrecioHora" required>
+
+            <label for="editarPrecioMinuto">Precio Min:</label>
+            <input type="text" id="editarPrecioMinuto" required>
+
+            <input type="submit" value="Actualizar Estacionamiento">
+        </form>
+    </div>
+</div>
+
+<div id="modalAgregar" class="modal" style="display:none;">
+
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModalAgregar()">&times;</span>
+        <h2>Añadir Estacionamiento</h2>
+        <form id="formAgregar">
+            
+            <label for="agregarDireccion">Dirección:</label>
+            <input type="text" id="agregarDireccion" required>
+
+            <label for="agregarLatitud">Latitud:</label>
+            <input type="text" id="agregarLatitud" required>
+
+            <label for="agregarLongitud">Longitud:</label>
+            <input type="text" id="agregarLongitud" required>
+
+            <label for="agregarNombre">Nombre:</label>
+            <input type="text" id="agregarNombre" required>
+
+            <label for="agregarPrecioHora">Precio Hora:</label>
+            <input type="text" id="agregarPrecioHora" required>
+
+            <label for="agregarPrecioMin">Precio Min:</label>
+            <input type="text" id="agregarPrecioMin" required>
+
+            <input type="submit" value="Añadir Estacionamiento">
+        </form>
+    </div>
+</div>
+<script src="js/main_script.js"></script>
+</body>
+</html>

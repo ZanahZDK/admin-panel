@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración de Espacios de Estacionamiento</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="js/firebase-config.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>Panel de Administración</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="parking-lot.html">Estacionamientos</a></li>
+                    <li class="current"><a href="#">Espacios</a></li>
+                    <li><a href="#" id="logout">Salir</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<div class="container">
+    <section id="main">
+        <h1>Gestión de Espacios de Estacionamiento</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Añadir</th>
+                </tr>
+            </thead>
+            <tbody id="parkingLotList">
+                <!-- Los parking lot se cargarán aquí -->
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<div id="modalActions" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModalAcciones()">&times;</span>
+        <h2>Añadir Espacio de Estacionamiento</h2>
+        <form id="formAddParkingSpace">
+            <input type="hidden" id="parkingLotIdInput">
+
+            <label for="floorInput">Piso:</label>
+            <input type="text" id="floorInput" required>
+
+            <label for="ubicationInput">Ubicación:</label>
+            <input type="text" id="ubicationInput" required>
+
+            <label for="availableInput">Disponible:</label>
+            <input type="checkbox" id="availableInput">
+            <input type="submit" value="Añadir Espacio">
+        </form>
+    </div>
+</div>
+
+<div id="modalParkingSpaces" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModalParkingSpaces()">&times;</span>
+        <h2>Espacios de Estacionamiento</h2>
+        <input type="hidden" id="parkingLotIdInput">
+        <div>
+            <button onclick="filtrarPorPiso('Nivel 1')">Nivel 1</button>
+            <button onclick="filtrarPorPiso('Nivel 2')">Nivel 2</button>
+            <button onclick="filtrarPorPiso('Nivel 3')">Nivel 3</button>
+        </div>
+
+        <div id="parkingSpacesContainer">
+            <!-- Los espacios de estacionamiento se cargarán aquí -->
+        </div>
+    </div>
+</div>
+
+<script src="js/spaces.js"></script>
+</body>
+</html>
