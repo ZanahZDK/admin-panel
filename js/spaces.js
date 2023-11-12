@@ -137,7 +137,6 @@ function eliminarParkingSpace(spaceId) {
     .then(response => {
         if (response.ok) {
             console.log('Parking Space eliminado:', spaceId);
-            // Aquí puedes agregar código para actualizar la UI después de la eliminación
         } else {
             throw new Error('Error al eliminar el parking_space');
         }
@@ -184,3 +183,13 @@ function filtrarPorPiso(piso) {
         console.error('Error:', error);
     });
 }
+
+document.getElementById('logout').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    firebase.auth().signOut().then(() => {
+        window.location.href = 'index.html';
+    }).catch((error) => {
+        console.error('Error al cerrar sesión:', error);
+    });
+});

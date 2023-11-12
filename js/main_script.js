@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
             editar(id);
         } else if (e.target.matches('.delete-btn')) {
             const id = e.target.getAttribute('data-id');
-            eliminarEstacionamiento(id); // Asegúrate de que la función eliminarEstacionamiento() esté definida
+            eliminarEstacionamiento(id); 
         }
     });
 
@@ -201,7 +201,7 @@ document.getElementById('logout').addEventListener('click', function(e) {
     e.preventDefault();
 
     firebase.auth().signOut().then(() => {
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
     }).catch((error) => {
         console.error('Error al cerrar sesión:', error);
     });

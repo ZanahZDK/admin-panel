@@ -12,13 +12,10 @@
 </head>
 
 <script>
-    // Verificar el estado de autenticación del usuario
     firebase.auth().onAuthStateChanged((user) => {
         if (!user) {
-            // Si no hay usuario autenticado, redirige a login.html
-            window.location.href = 'login.html';
+            window.location.href = 'index.html';
         }
-        // Si hay usuario autenticado, puedes agregar lógica adicional aquí si es necesario
     });
 </script>
 
