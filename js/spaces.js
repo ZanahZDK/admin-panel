@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Cargar datos de los estacionamientos
-    fetch('http://16.170.227.32:8080/parking_lot')
+    fetch('https://16.170.227.32:443/parking_lot')
     .then(response => response.json())
     .then(data => {
         const tableBody = document.querySelector('#parkingLotList');
@@ -78,7 +78,7 @@ function addParkingSpace(parkingSpaceData) {
     const parkingLotId = parkingSpaceData.parkingLotId;
     delete parkingSpaceData.parkingLotId;
 
-    fetch(`http://16.170.227.32:8080/parking_space/add/${parkingLotId}`, {
+    fetch(`https://16.170.227.32:443/parking_space/add/${parkingLotId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -103,7 +103,7 @@ function addParkingSpace(parkingSpaceData) {
 
 function mostrarParkingSpaces(parkingLotId) {
     document.getElementById('parkingLotIdInput').value = parkingLotId;
-    fetch(`http://16.170.227.32:8080/parking_space/by-parking-lot/${parkingLotId}`)
+    fetch(`https://16.170.227.32:443/parking_space/by-parking-lot/${parkingLotId}`)
     .then(response => response.json())
     .then(parkingSpaces => {
         const parkingSpacesContainer = document.getElementById('parkingSpacesContainer');
@@ -131,7 +131,7 @@ function mostrarParkingSpaces(parkingLotId) {
 }
 
 function eliminarParkingSpace(spaceId) {
-    fetch(`http://16.170.227.32:8080/parking_space/delete/${spaceId}`, {
+    fetch(`https://16.170.227.32:443/parking_space/delete/${spaceId}`, {
         method: 'DELETE'
     })
     .then(response => {
@@ -158,7 +158,7 @@ function filtrarPorPiso(piso) {
         return;
     }
     
-    fetch(`http://16.170.227.32:8080/parking_space/by-parking-lot/${parkingLotId}/floor/${piso}`)
+    fetch(`https://16.170.227.32:443/parking_space/by-parking-lot/${parkingLotId}/floor/${piso}`)
     .then(response => response.json())
     .then(parkingSpaces => {
         console.log("Parking spaces recibidos:", parkingSpaces);
